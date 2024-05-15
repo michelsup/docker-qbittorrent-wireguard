@@ -128,6 +128,10 @@ if [[ ! -z "${ADDITIONAL_PORTS}" ]]; then
 		# accept input to additional port for "${docker_interface}"
 		iptables -A INPUT -i "${docker_interface}" -p tcp --dport "${additional_port_item}" -j ACCEPT
 		iptables -A INPUT -i "${docker_interface}" -p tcp --sport "${additional_port_item}" -j ACCEPT
+
+  		iptables -A INPUT -i "${docker_interface}" -p udp --dport "${additional_port_item}" -j ACCEPT
+    		iptables -A INPUT -i "${docker_interface}" -p udp --sport "${additional_port_item}" -j ACCEPT
+    
 	done
 fi
 
